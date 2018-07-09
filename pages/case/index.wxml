@@ -1,0 +1,31 @@
+ <loading hidden="{{loadFinish}}" bindchange="loadingChange" />
+ <scroll-view scroll-y="true" style="height:100%" bindscrolltolower="loadMore" bindscrolltoupper="loadNew" class="v38casebox">
+
+ <view class="tuijian_item" id="case_list" style="margin-top:0">
+ <a href="javascript:;" class="tuijian_list"  data-id="{{item.id}}" wx:for="{{list}}" wx:key="{{item.id}}" bindtap="onDetail">
+        <view class="ui_flex">
+            <view class="ui_flex-hd">
+                <view class="title">{{item.title}}</view>
+                <view class="info">导读：{{item.summary}}</view>
+                <view class="ui_flex v3-7-info">
+                    <view class="ui_flex-hd">
+                        <view class="tags">
+                        <block wx:if="{{item.taxType && item.taxSubType }}">
+                          <span>{{item.taxType}}</span>
+                          <span>{{item.taxSubType}}</span>
+                        </block>
+                        <block wx:elif="{{item.taxType}}">
+                          <span>{{item.taxType}}</span>
+                        </block>
+                        </view>
+                    </view>
+                    <view class="time">{{item.createTime}}</view>
+                </view>
+            </view>
+        </view>
+</a>
+</view>
+</scroll-view>
+
+
+

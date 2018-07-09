@@ -1,0 +1,30 @@
+
+<template name="wxSortPickerView">
+<!--滚动视图  -->
+    <scroll-view class="wxSortPickerViewList" scroll-y="true" style="height: {{wxSortPickerData.view.scrollHeight}}px;" bindscrolltoupper="wxSortPickerViewUpper" bindscrolltolower="wxSortPickerViewLower" bindscroll="wxSortPickerViewScroll" scroll-into-view="{{wxSortPickerData.wxSortPickerViewtoView}}" scroll-top="{{wxSortPickerData.wxSortPickerViewScrollTop}}">
+
+        <block wx:for="{{wxSortPickerData.list}}" wx:for-item="item" wx:key="">
+            <view id="{{item.tag}}" class="wxSortPickerViewTag">{{item.tag}}</view>
+            <template is="wxSortPickerViewItem" data="{{item}}"/>
+        </block>
+  </scroll-view>
+  <!--索引栏  -->
+  <template is="wxSortPickerViewTemTags" data="{{wxSortPickerData}}"/>
+
+</template>
+
+ <template name="wxSortPickerViewItem">
+    <block wx:for="{{item.list}}" wx:for-item="item" wx:key="">
+        <view class="wxSortPickerViewItem"  bindtap = "wxSortPickerViewItemTap" data-id="{{item.id}}">
+            <text>{{item.name}}</text>            
+        </view>
+    </block>
+</template> 
+
+ <template name="wxSortPickerViewTemTags">
+    <scroll-view style="width:20px" class="wxSortPickerViewTemTags">
+        <block wx:for="{{wxSortPickerData.indexList}}" wx:for-item="item" wx:key="">
+            <view bindtap="wxSortPickerViewTemTagTap" data-tag="{{item}}" class="wxSortPickerViewTemTag">{{item}}</view>
+        </block>
+    </scroll-view>
+</template> 
